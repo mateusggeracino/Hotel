@@ -1,6 +1,6 @@
 ﻿namespace Hotel.Domain.Models
 {
-    public class Reserva
+    public class Reservation
     {
         
     }
