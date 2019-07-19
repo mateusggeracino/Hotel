@@ -1,6 +1,6 @@
 ﻿namespace Hotel.Services.Business
 {
-    public class Reservation
+    public class ReservationBusiness
     {
         
     }
