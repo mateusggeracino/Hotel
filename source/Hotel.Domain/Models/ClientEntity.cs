@@ -1,6 +1,6 @@
 ﻿namespace Hotel.Domain.Models
 {
-    public class Client
+    public class ClientEntity : Entity
     {
         public string Name { get; set; }
         public string SocialNumber { get; set; }

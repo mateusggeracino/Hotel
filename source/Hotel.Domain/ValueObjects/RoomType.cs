@@ -1,6 +1,6 @@
 ﻿namespace Hotel.Domain.ValueObjects
 {
-    public enum TypeRoom
+    public enum RoomType
     {
         Single,
         Standard,
