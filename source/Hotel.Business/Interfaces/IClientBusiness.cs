@@ -8,5 +8,7 @@ namespace Hotel.Business.Interfaces
     public interface IClientBusiness
     {
         ClientEntity Insert(ClientEntity client);
+        ClientEntity GetBySocialNumber(string socialNumber);
+        List<ClientEntity> GetAll();
     }
 }

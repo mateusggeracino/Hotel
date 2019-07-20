@@ -3,6 +3,7 @@
     public enum RoomStatus
     {
         Open,
-        Block
+        Block,
+        Busy
     }
 }

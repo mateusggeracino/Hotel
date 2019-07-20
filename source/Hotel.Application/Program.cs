@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Hotel.Application.Views;
 
 namespace Hotel.Application
 {
@@ -6,7 +6,8 @@ namespace Hotel.Application
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var hotel = new HotelView();
+            hotel.InitHotel();
         }
     }
 }

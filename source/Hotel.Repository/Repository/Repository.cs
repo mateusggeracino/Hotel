@@ -3,15 +3,16 @@ using Hotel.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Hotel.Repository.Repository
 {
-    public abstract class Repository<T> : IRepository<T> where T : Entity
+    public class Repository<T> : IRepository<T> where T : Entity
     {
         protected static List<T> _data;
         private static object syncObj = new object();
 
-        protected Repository()
+        public Repository()
         {
             if (_data == null)
             {
@@ -48,6 +49,12 @@ namespace Hotel.Repository.Repository
         {
             _data.Remove(obj);
         }
+
+        public List<T> Find(Func<T, bool> predicate)
+        {
+            return _data.Where(predicate).ToList();
+        }
+
 
         public void Update(T obj)
         {

@@ -9,7 +9,9 @@ namespace Hotel.Business.Interfaces
         RoomEntity Insert(RoomEntity room);
         RoomEntity GetById(int id);
         List<RoomEntity> GetAll();
-        List<RoomEntity> GetByType(RoomType type);
+        List<RoomEntity> GetByType(RoomTypeEntity roomType);
         List<RoomEntity> GetByStatus(RoomStatus status);
+
+        List<RoomTypeEntity> GetAllTypes();
     }
 }

@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using Hotel.Domain.Models;
 
 namespace Hotel.Repository.Interfaces
 {
@@ -9,5 +12,7 @@ namespace Hotel.Repository.Interfaces
         List<T> GetAll();
         void Update(T obj);
         void Remove(T obj);
+
+        List<T> Find(Func<T, bool> predicate);
     }
 }
