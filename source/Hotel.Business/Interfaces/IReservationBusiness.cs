@@ -2,8 +2,8 @@
 
 namespace Hotel.Business.Interfaces
 {
-    public interface IReservationBusiness
+    public interface IBookingBusiness
     {
-        ReservationEntity Insert(ReservationEntity reservation);
+        BookingEntity Insert(BookingEntity booking);
     }
 }

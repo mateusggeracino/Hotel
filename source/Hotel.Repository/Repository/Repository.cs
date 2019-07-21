@@ -55,7 +55,6 @@ namespace Hotel.Repository.Repository
             return _data.Where(predicate).ToList();
         }
 
-
         public void Update(T obj)
         {
             var item = _data.FirstOrDefault(x => x.Key == obj.Key);

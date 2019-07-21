@@ -1,4 +1,4 @@
-﻿using Hotel.Application.Views;
+﻿using Hotel.Application.Views.Hotel;
 
 namespace Hotel.Application
 {

@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices.ComTypes;
-using Hotel.Business.Interfaces;
+﻿using Hotel.Business.Interfaces;
 using Hotel.Domain.Models;
 using Hotel.Domain.ValueObjects;
 using Hotel.Repository.Interfaces;
@@ -11,9 +10,9 @@ namespace Hotel.Business.Business
     {
         private readonly IRepository<RoomEntity> _roomRepository;
 
-        public HotelBusiness()
+        public HotelBusiness(IRepository<RoomEntity> roomRepository)
         {
-            _roomRepository = new Repository<RoomEntity>();
+            _roomRepository = roomRepository;
         }
 
         public HotelEntity GetInfoHotel()

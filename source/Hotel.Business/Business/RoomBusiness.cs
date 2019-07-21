@@ -10,9 +10,9 @@ namespace Hotel.Business.Business
     public class RoomBusiness : IRoomBusiness
     {
         private readonly IRepository<RoomEntity> _roomRepository;
-        public RoomBusiness()
+        public RoomBusiness(IRepository<RoomEntity> roomRepository)
         {
-            _roomRepository = new Repository<RoomEntity>();
+            _roomRepository = roomRepository;
         }
 
         public List<RoomEntity> GetAll()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Hotel.Business.Business;
 using Hotel.Domain.Models;
+using Hotel.Repository.Repository;
 using Hotel.Services;
 
 namespace Hotel.Application.Views.Client
@@ -14,7 +15,7 @@ namespace Hotel.Application.Views.Client
         private readonly ClientServices _clientService;
         public ClientView()
         {
-            _clientService = new ClientServices(new ClientBusiness());
+            _clientService = new ClientServices(new ClientBusiness(new Repository<ClientEntity>()));
         }
 
         private void Insert()

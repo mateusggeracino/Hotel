@@ -3,6 +3,7 @@ using System.Linq;
 using Hotel.Business.Business;
 using Hotel.Domain.Models;
 using Hotel.Domain.ValueObjects;
+using Hotel.Repository.Repository;
 using Hotel.Services;
 
 namespace Hotel.Application.Views.Room
@@ -12,7 +13,7 @@ namespace Hotel.Application.Views.Room
         private readonly RoomServices _roomServices;
         public RoomView()
         {
-            _roomServices = new RoomServices(new RoomBusiness());
+            _roomServices = new RoomServices(new RoomBusiness(new Repository<RoomEntity>()));
         }
 
         public void OptionsRoom()
@@ -68,6 +69,7 @@ namespace Hotel.Application.Views.Room
 
         private RoomStatus SelectRoomStatus()
         {
+            CleanScreen();
             Message("Select a room type");
             Message("-------------");
             Message("1 - Open");
@@ -86,6 +88,7 @@ namespace Hotel.Application.Views.Room
 
         private RoomTypeEntity SelectRoomType()
         {
+            CleanScreen();
             var roomTypes = _roomServices.GetAllTypes();
             CleanScreen();
             Message("Select a room type");

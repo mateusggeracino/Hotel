@@ -3,19 +3,27 @@ using System.Linq;
 using Hotel.Business.Interfaces;
 using Hotel.Domain.Models;
 using Hotel.Repository.Interfaces;
-using Hotel.Repository.Repository;
 
 namespace Hotel.Business.Business
 {
     public class ClientBusiness : IClientBusiness
     {
         private readonly IRepository<ClientEntity> _clientRepository;
-        public ClientBusiness()
+        public ClientBusiness(IRepository<ClientEntity> clientRepository)
         {
-            _clientRepository = new Repository<ClientEntity>();
+            _clientRepository = clientRepository;
         }
 
         public ClientEntity Insert(ClientEntity clientEntity)
+        {
+            var clientList = ClientExists(clientEntity);
+            if (clientList != null) return clientList;
+
+            _clientRepository.Insert(clientEntity);
+            return clientEntity;
+        }
+
+        private ClientEntity ClientExists(ClientEntity clientEntity)
         {
             var clientList = _clientRepository.Find(x => x.SocialNumber == clientEntity.SocialNumber);
 
@@ -25,8 +33,7 @@ namespace Hotel.Business.Business
                 return clientEntity;
             }
 
-            _clientRepository.Insert(clientEntity);
-            return clientEntity;
+            return null;
         }
 
         public ClientEntity GetBySocialNumber(string socialNumber)
