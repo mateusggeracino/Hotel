@@ -12,12 +12,6 @@ namespace Hotel.Application.Views.Client
 
     public class ClientView : View
     {
-        private readonly ClientServices _clientService;
-        public ClientView()
-        {
-            _clientService = new ClientServices(new ClientBusiness(new Repository<ClientEntity>()));
-        }
-
         private void Insert()
         {
             var client = new ClientEntity();
@@ -37,7 +31,7 @@ namespace Hotel.Application.Views.Client
             Message("Phone: ");
             client.Phone = GetInput();
 
-            var clientEntity = _clientService.Insert(client);
+            var clientEntity = clientServices.Insert(client);
             PrintErrors(clientEntity.Validations);
         }
 
@@ -48,7 +42,7 @@ namespace Hotel.Application.Views.Client
             var socialNumber = GetInput();
             CleanScreen();
 
-            var client = _clientService.GetBySocialNumber(socialNumber);
+            var client = clientServices.GetBySocialNumber(socialNumber);
             if (client.Validations.Any())
             {
                 PrintErrors(client.Validations);
@@ -70,7 +64,7 @@ namespace Hotel.Application.Views.Client
         private void GetAll()
         {
             CleanScreen();
-            var clients = _clientService.GetAll();
+            var clients = clientServices.GetAll();
 
             foreach(var client in clients) ShowClient(client);
             PressToContinue();

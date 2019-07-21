@@ -10,12 +10,6 @@ namespace Hotel.Application.Views.Room
 {
     public class RoomView : View
     {
-        private readonly RoomServices _roomServices;
-        public RoomView()
-        {
-            _roomServices = new RoomServices(new RoomBusiness(new Repository<RoomEntity>()));
-        }
-
         public void OptionsRoom()
         {
             var result = false;
@@ -63,7 +57,7 @@ namespace Hotel.Application.Views.Room
             room.Type = SelectRoomType();
             room.Status = SelectRoomStatus();
 
-            var roomEntity = _roomServices.Insert(room);
+            var roomEntity = roomServices.Insert(room);
             PrintErrors(roomEntity.Validations);
         }
 
@@ -89,7 +83,7 @@ namespace Hotel.Application.Views.Room
         private RoomTypeEntity SelectRoomType()
         {
             CleanScreen();
-            var roomTypes = _roomServices.GetAllTypes();
+            var roomTypes = roomServices.GetAllTypes();
             CleanScreen();
             Message("Select a room type");
             Message("-------------");
@@ -108,7 +102,7 @@ namespace Hotel.Application.Views.Room
             CleanScreen();
             var roomType = SelectRoomType();
 
-            var rooms = _roomServices.GetByType(roomType);
+            var rooms = roomServices.GetByType(roomType);
 
             foreach (var room in rooms)
             {
@@ -123,7 +117,7 @@ namespace Hotel.Application.Views.Room
             CleanScreen();
             var roomStatus = SelectRoomStatus();
 
-            var rooms = _roomServices.GetByStatus(roomStatus);
+            var rooms = roomServices.GetByStatus(roomStatus);
 
             foreach (var room in rooms)
             {

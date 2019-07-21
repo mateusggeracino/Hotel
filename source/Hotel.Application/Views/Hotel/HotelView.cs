@@ -11,13 +11,6 @@ namespace Hotel.Application.Views.Hotel
 {
     public class HotelView : View
     {
-        private readonly HotelServices _hotelServices;
-
-        public HotelView()
-        {
-            _hotelServices = new HotelServices(new HotelBusiness(new Repository<RoomEntity>()));
-        }
-
         public void InitHotel()
         {
             var result = true;
@@ -61,7 +54,7 @@ namespace Hotel.Application.Views.Hotel
         }
         private void ShowInfoHotel()
         {
-            var infoHotel = _hotelServices.GetInfoHotel();
+            var infoHotel = hotelServices.GetInfoHotel();
 
             Message($"Quantity room: {infoHotel.QuantityRoom}");
             Message($"Quantity room busy: {infoHotel.QuantityRoomBusy}");

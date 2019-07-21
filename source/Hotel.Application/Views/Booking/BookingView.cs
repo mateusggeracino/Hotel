@@ -8,14 +8,6 @@ namespace Hotel.Application.Views.Booking
 {
     public class BookingView : View
     {
-        private readonly BookingServices _bookingServices;
-        public BookingView()
-        {
-            _bookingServices = new BookingServices(new BookingBusiness(new Repository<RoomEntity>(), new Repository<BookingEntity>())
-                                                                                   , new ClientBusiness(new Repository<ClientEntity>())
-                                                                                   , new RoomBusiness(new Repository<RoomEntity>()));
-        }
-
         public void OptionsBooking()
         {
             var result = false;
@@ -82,7 +74,7 @@ namespace Hotel.Application.Views.Booking
             Message("Enter days");
             var days = Convert.ToInt32(GetInput());
 
-            var booking = _bookingServices.Insert(socialNumber, roomId, days);
+            var booking = bookingServices.Insert(socialNumber, roomId, days);
             PrintErrors(booking.Client.Validations);
             PrintErrors(booking.Room.Validations);
             PressToContinue();
