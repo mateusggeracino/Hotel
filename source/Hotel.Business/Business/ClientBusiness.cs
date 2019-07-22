@@ -6,6 +6,9 @@ using Hotel.Repository.Interfaces;
 
 namespace Hotel.Business.Business
 {
+    /// <summary>
+    /// Classe onde se encontra toda a regra de negócio de cliente.
+    /// </summary>
     public class ClientBusiness : IClientBusiness
     {
         private readonly IRepository<ClientEntity> _clientRepository;
@@ -14,6 +17,11 @@ namespace Hotel.Business.Business
             _clientRepository = clientRepository;
         }
 
+        /// <summary>
+        /// Responsável por inserir um novo cliente
+        /// </summary>
+        /// <param name="clientEntity"></param>
+        /// <returns></returns>
         public ClientEntity Insert(ClientEntity clientEntity)
         {
             var clientList = ClientExists(clientEntity);
@@ -23,6 +31,11 @@ namespace Hotel.Business.Business
             return clientEntity;
         }
 
+        /// <summary>
+        /// Verifica se o cliente já está cadastrado na base de dados
+        /// </summary>
+        /// <param name="clientEntity"></param>
+        /// <returns></returns>
         private ClientEntity ClientExists(ClientEntity clientEntity)
         {
             var clientList = _clientRepository.Find(x => x.SocialNumber == clientEntity.SocialNumber);
@@ -36,6 +49,11 @@ namespace Hotel.Business.Business
             return null;
         }
 
+        /// <summary>
+        /// Obter cliente pelo número do cpf
+        /// </summary>
+        /// <param name="socialNumber"></param>
+        /// <returns></returns>
         public ClientEntity GetBySocialNumber(string socialNumber)
         {
             var clientList = _clientRepository.Find(x => x.SocialNumber.Contains(socialNumber));
@@ -47,6 +65,10 @@ namespace Hotel.Business.Business
             return client;
         }
 
+        /// <summary>
+        /// Obter todos os clientes cadastrados
+        /// </summary>
+        /// <returns></returns>
         public List<ClientEntity> GetAll()
         {
             return _clientRepository.GetAll();

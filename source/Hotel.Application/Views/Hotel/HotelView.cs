@@ -5,8 +5,14 @@ using Hotel.Application.Views.Room;
 
 namespace Hotel.Application.Views.Hotel
 {
+    /// <summary>
+    /// Classe concreta que herda de View. Responsável por interagir com o usuário e prover resultados informações as camadas inferiores.
+    /// </summary>
     public class HotelView : View
     {
+        /// <summary>
+        /// Reponsável por inicializar o Hotel
+        /// </summary>
         public void InitHotel()
         {
             var result = true;
@@ -39,6 +45,10 @@ namespace Hotel.Application.Views.Hotel
                 }
             } while (result);
         }
+
+        /// <summary>
+        /// Imprimi o menu de interação com o usuário
+        /// </summary>
         private void ShowMenu()
         {
             Message("Select");
@@ -48,9 +58,13 @@ namespace Hotel.Application.Views.Hotel
             Message("3 - Booking");
             Message("4 - Exit");
         }
+
+        /// <summary>
+        /// Formata a impressão das informações do Hotel
+        /// </summary>
         private void ShowInfoHotel()
         {
-            var infoHotel = hotelServices.GetInfoHotel();
+            var infoHotel = HotelServices.GetInfoHotel();
 
             Message($"Quantity room: {infoHotel.QuantityRoom}");
             Message($"Quantity room busy: {infoHotel.QuantityRoomBusy}");

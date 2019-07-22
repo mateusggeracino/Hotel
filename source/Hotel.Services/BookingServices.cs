@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Hotel.Business.Interfaces;
 using Hotel.Domain.Models;
 
 namespace Hotel.Services
 {
+    /// <summary>
+    /// Classe concreta responsável por orquestrar os métodos da reserva
+    /// </summary>
     public class BookingServices
     {
         private readonly IBookingBusiness _bookingBusiness;
@@ -19,6 +21,13 @@ namespace Hotel.Services
             _roomBusiness = roomBusiness;
         }
 
+        /// <summary>
+        /// Método responsável por orquestrar as funções de inserção de uma nova reserva
+        /// </summary>
+        /// <param name="socialNumber">Número do cpf</param>
+        /// <param name="roomId">Número do quarto</param>
+        /// <param name="days">Dias de hospedagem</param>
+        /// <returns></returns>
         public BookingEntity Insert(string socialNumber, int roomId, int days)
         {
             var bookingEntity = new BookingEntity
@@ -35,6 +44,11 @@ namespace Hotel.Services
             return booking;
         }
 
+        /// <summary>
+        /// Obtem reserva através do número do cpf do cliente
+        /// </summary>
+        /// <param name="socialNumber"></param>
+        /// <returns></returns>
         public List<BookingEntity> GetBySocialNumber(string socialNumber)
         {
             return _bookingBusiness.GetBySocialNumber(socialNumber);

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Hotel.Domain.Models
 {
+    /// <summary>
+    /// Classe abstrata responsável por garantir a herença das propriedades em suas entidades
+    /// </summary>
     public abstract class Entity
     {
         protected Entity()

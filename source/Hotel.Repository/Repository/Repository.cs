@@ -3,20 +3,25 @@ using Hotel.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace Hotel.Repository.Repository
 {
     public class Repository<T> : IRepository<T> where T : Entity
     {
+        /// <summary>
+        /// Lista de dados genérica que é iniciada em tempo de execução e mantida por singleton. 
+        /// </summary>
         protected static List<T> _data;
-        private static object syncObj = new object();
+        private static object _syncObj = new object();
 
+        /// <summary>
+        /// Método construtor que implementa o padrão de projeto: Singleton (Que mantém apenas uma instância de _data).
+        /// </summary>
         public Repository()
         {
             if (_data == null)
             {
-                lock (syncObj)
+                lock (_syncObj)
                 {
                     if (_data == null)
                     {

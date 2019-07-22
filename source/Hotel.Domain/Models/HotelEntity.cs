@@ -1,5 +1,8 @@
 ﻿namespace Hotel.Domain.Models
 {
+    /// <summary>
+    /// Entidade responsável por conter as propriedades de um Hotel.
+    /// </summary>
     public class HotelEntity : Entity
     {
         public int QuantityRoom { get; set; }

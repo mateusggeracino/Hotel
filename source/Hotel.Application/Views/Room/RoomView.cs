@@ -5,21 +5,21 @@ using Hotel.Domain.ValueObjects;
 
 namespace Hotel.Application.Views.Room
 {
+    /// <summary>
+    /// Classe concreta que herda de View. Responsável por interagir e transmitir informações ao usuário
+    /// </summary>
     public class RoomView : View
     {
+        /// <summary>
+        /// Imprimi o menu de opções que o usuário pode realizar para o módulo de quartos.
+        /// </summary>
         public void OptionsRoom()
         {
             var result = false;
             do
             {
                 CleanScreen();
-                Message("Select a option");
-                Message("-------------");
-                Message("1 - Add a new room");
-                Message("2 - Consult by type");
-                Message("3 - Consult by status");
-                Message("4 - Update room");
-                Message("5 - Back");
+                ShowMenuRoom();
                 var option = Convert.ToInt32(GetInput());
 
                 switch (option)
@@ -43,6 +43,23 @@ namespace Hotel.Application.Views.Room
             } while (!result);
         }
 
+        /// <summary>
+        /// Imprimi o menu responsável por interagir com o usuário no módulo de quartos.
+        /// </summary>
+        private void ShowMenuRoom()
+        {
+            Message("Select a option");
+            Message("-------------");
+            Message("1 - Add a new room");
+            Message("2 - Consult by type");
+            Message("3 - Consult by status");
+            Message("4 - Update room");
+            Message("5 - Back");
+        }
+
+        /// <summary>
+        /// Interagi com o usuário para inserir um novo quarto.
+        /// </summary>
         private void Insert()
         {
             var room = new RoomEntity();
@@ -54,10 +71,14 @@ namespace Hotel.Application.Views.Room
             room.Type = SelectRoomType();
             room.Status = SelectRoomStatus();
 
-            var roomEntity = roomServices.Insert(room);
+            var roomEntity = RoomServices.Insert(room);
             PrintErrors(roomEntity.Validations);
         }
 
+        /// <summary>
+        /// Interagi com o usuário para que o mesmo selecione o status do quarto
+        /// </summary>
+        /// <returns>retorna o status do quarto selecionado</returns>
         private RoomStatus SelectRoomStatus()
         {
             CleanScreen();
@@ -77,10 +98,14 @@ namespace Hotel.Application.Views.Room
             }
         }
 
+        /// <summary>
+        /// Interagi com o usuário para que o mesmo selecione o tipo do quarto
+        /// </summary>
+        /// <returns>retorna o tipo do quarto selecionado</returns>
         private RoomTypeEntity SelectRoomType()
         {
             CleanScreen();
-            var roomTypes = roomServices.GetAllTypes();
+            var roomTypes = RoomServices.GetAllTypes();
             CleanScreen();
             Message("Select a room type");
             Message("-------------");
@@ -94,12 +119,15 @@ namespace Hotel.Application.Views.Room
             return roomTypes.FirstOrDefault(x => x.Id ==  option);
         }
 
+        /// <summary>
+        /// Interagi com o usuário para obter quartos por tipo
+        /// </summary>
         private void ConsultByType()
         {
             CleanScreen();
             var roomType = SelectRoomType();
 
-            var rooms = roomServices.GetByType(roomType);
+            var rooms = RoomServices.GetByType(roomType);
 
             foreach (var room in rooms)
             {
@@ -109,12 +137,15 @@ namespace Hotel.Application.Views.Room
             PressToContinue();
         }
 
+        /// <summary>
+        /// Interagi com o usuário para obter quartos por status
+        /// </summary>
         private void ConsultByStatus()
         {
             CleanScreen();
             var roomStatus = SelectRoomStatus();
 
-            var rooms = roomServices.GetByStatus(roomStatus);
+            var rooms = RoomServices.GetByStatus(roomStatus);
 
             foreach (var room in rooms)
             {
@@ -124,6 +155,10 @@ namespace Hotel.Application.Views.Room
             PressToContinue();
         }
 
+        /// <summary>
+        /// Formata a exibição do quarto passado por parâmetro
+        /// </summary>
+        /// <param name="room"></param>
         private void ShowRoom(RoomEntity room)
         {
             Message($"Room Id: {room.Id}");

@@ -1,10 +1,11 @@
 ﻿using Hotel.Domain.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Hotel.Business.Interfaces
 {
+    /// <summary>
+    /// Contrato responsável por manter a implementação dos métodos na classe concreta.
+    /// </summary>
     public interface IClientBusiness
     {
         ClientEntity Insert(ClientEntity client);

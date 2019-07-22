@@ -1,5 +1,8 @@
 ﻿namespace Hotel.Domain.Models
 {
+    /// <summary>
+    /// Entidade responsável por conter as propriedades de um cliente.
+    /// </summary>
     public class ClientEntity : Entity
     {
         public string Name { get; set; }

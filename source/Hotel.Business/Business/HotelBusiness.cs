@@ -2,10 +2,12 @@
 using Hotel.Domain.Models;
 using Hotel.Domain.ValueObjects;
 using Hotel.Repository.Interfaces;
-using Hotel.Repository.Repository;
 
 namespace Hotel.Business.Business
 {
+    /// <summary>
+    /// Classe responsável por aplicar as regras de negócio do Hotel.
+    /// </summary>
     public class HotelBusiness : IHotelBusiness
     {
         private readonly IRepository<RoomEntity> _roomRepository;
@@ -15,6 +17,10 @@ namespace Hotel.Business.Business
             _roomRepository = roomRepository;
         }
 
+        /// <summary>
+        /// Obtem as informações do Hotel. No caso, as informações dos quartos cadastrados no mesmo.
+        /// </summary>
+        /// <returns></returns>
         public HotelEntity GetInfoHotel()
         {
             var infoHotel = new HotelEntity

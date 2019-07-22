@@ -3,19 +3,21 @@ using Hotel.Domain.Models;
 
 namespace Hotel.Application.Views.Booking
 {
+    /// <summary>
+    /// Classe concreta que herda de View. Responsável por interagir com o usuário no módulo de reserva.
+    /// </summary>
     public class BookingView : View
     {
+        /// <summary>
+        /// Interagi com o usuário na decisão do módulo de reservas
+        /// </summary>
         public void OptionsBooking()
         {
             var result = false;
             do
             {
                 CleanScreen();
-                Message("Select a option");
-                Message("-------------");
-                Message("1 - Add a new Booking");
-                Message("2 - Consult Booking");
-                Message("3 - Back");
+                ShowMenuBooking();
                 var option = Convert.ToInt32(GetInput());
 
                 switch (option)
@@ -33,13 +35,28 @@ namespace Hotel.Application.Views.Booking
             } while (!result);
         }
 
+        /// <summary>
+        /// Método responsável por interar com o usuário no módulo de reservas
+        /// </summary>
+        private void ShowMenuBooking()
+        {
+            Message("Select a option");
+            Message("-------------");
+            Message("1 - Add a new Booking");
+            Message("2 - Consult Booking");
+            Message("3 - Back");
+        }
+
+        /// <summary>
+        /// Responsável por interagir com o usuário na consulta de uma reserva.
+        /// </summary>
         private void Consult()
         {
             CleanScreen();
             Message("Enter Social Number: ");
             var socialNumber = GetInput();
 
-            var bookings = bookingServices.GetBySocialNumber(socialNumber);
+            var bookings = BookingServices.GetBySocialNumber(socialNumber);
             CleanScreen();
 
             foreach (var booking in bookings)
@@ -50,6 +67,10 @@ namespace Hotel.Application.Views.Booking
             PressToContinue();
         }
 
+        /// <summary>
+        /// Imprimi uma reserva de formalizada
+        /// </summary>
+        /// <param name="booking"></param>
         private void ShowBooking(BookingEntity booking)
         {
             Message($"--    Client    --");
@@ -68,6 +89,9 @@ namespace Hotel.Application.Views.Booking
             Message($"Total: {booking.Total}");
         }
 
+        /// <summary>
+        /// Responsável por inserir uma nova reserva.
+        /// </summary>
         private void Insert()
         {
             CleanScreen();
@@ -80,7 +104,7 @@ namespace Hotel.Application.Views.Booking
             Message("Enter days");
             var days = Convert.ToInt32(GetInput());
 
-            var booking = bookingServices.Insert(socialNumber, roomId, days);
+            var booking = BookingServices.Insert(socialNumber, roomId, days);
             PrintErrors(booking.Client.Validations);
             PrintErrors(booking.Room.Validations);
             PressToContinue();

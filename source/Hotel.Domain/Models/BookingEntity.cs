@@ -2,6 +2,9 @@
 
 namespace Hotel.Domain.Models
 {
+    /// <summary>
+    /// Entidade responsável por conter as propriedades de uma reserva.
+    /// </summary>
     public class BookingEntity : Entity
     {
         public ClientEntity Client { get; set; }

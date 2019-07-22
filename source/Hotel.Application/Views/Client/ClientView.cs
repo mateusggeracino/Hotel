@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using Hotel.Business.Business;
 using Hotel.Domain.Models;
-using Hotel.Repository.Repository;
-using Hotel.Services;
 
 namespace Hotel.Application.Views.Client
 {
-
-
+    /// <summary>
+    /// Classe concreta que herda de View. Responsável por interagir com o usuário no módulo de cliente.
+    /// </summary>
     public class ClientView : View
     {
+        /// <summary>
+        /// Interagi com o usuário, para que o mesmo possa inserir um novo cliente.
+        /// </summary>
         private void Insert()
         {
             var client = new ClientEntity();
@@ -31,10 +31,13 @@ namespace Hotel.Application.Views.Client
             Message("Phone: ");
             client.Phone = GetInput();
 
-            var clientEntity = clientServices.Insert(client);
+            var clientEntity = ClientServices.Insert(client);
             PrintErrors(clientEntity.Validations);
         }
 
+        /// <summary>
+        /// Interagi com o usuário durante a consulta de um cliente.
+        /// </summary>
         private void Consult()
         {
             CleanScreen();
@@ -42,7 +45,7 @@ namespace Hotel.Application.Views.Client
             var socialNumber = GetInput();
             CleanScreen();
 
-            var client = clientServices.GetBySocialNumber(socialNumber);
+            var client = ClientServices.GetBySocialNumber(socialNumber);
             if (client.Validations.Any())
             {
                 PrintErrors(client.Validations);
@@ -52,6 +55,10 @@ namespace Hotel.Application.Views.Client
             PressToContinue();
         }
 
+        /// <summary>
+        /// Imprimi as informações de um cliente
+        /// </summary>
+        /// <param name="client"></param>
         private void ShowClient(ClientEntity client)
         {
             Message($"Name: {client.Name}");
@@ -61,27 +68,28 @@ namespace Hotel.Application.Views.Client
             Message("-------------");
         }
 
+        /// <summary>
+        /// Obtém todos os clientes cadastrados
+        /// </summary>
         private void GetAll()
         {
             CleanScreen();
-            var clients = clientServices.GetAll();
+            var clients = ClientServices.GetAll();
 
             foreach(var client in clients) ShowClient(client);
             PressToContinue();
         }
 
+        /// <summary>
+        /// Responsável por interagir com o usuário na decisão de acesso ao módulo de cliente.
+        /// </summary>
         public void OptionsClient()
         {
             var result = false;
             do
             {
                 CleanScreen();
-                Message("Select a option");
-                Message("-------------");
-                Message("1 - Add a new client");
-                Message("2 - Consult client");
-                Message("3 - Get all");
-                Message("4 - Back");
+                ShowMenuClient();
                 var option = Convert.ToInt32(GetInput());
 
                 switch (option)
@@ -100,6 +108,19 @@ namespace Hotel.Application.Views.Client
                         break;
                 }
             } while (!result);
+        }
+
+        /// <summary>
+        /// Imprimi método de interação com o usuário.
+        /// </summary>
+        private void ShowMenuClient()
+        {
+            Message("Select a option");
+            Message("-------------");
+            Message("1 - Add a new client");
+            Message("2 - Consult client");
+            Message("3 - Get all");
+            Message("4 - Back");
         }
     }
 }
