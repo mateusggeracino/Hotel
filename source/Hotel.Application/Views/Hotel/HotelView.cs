@@ -2,10 +2,6 @@
 using Hotel.Application.Views.Client;
 using Hotel.Application.Views.Booking;
 using Hotel.Application.Views.Room;
-using Hotel.Business.Business;
-using Hotel.Domain.Models;
-using Hotel.Repository.Repository;
-using Hotel.Services;
 
 namespace Hotel.Application.Views.Hotel
 {
@@ -50,7 +46,7 @@ namespace Hotel.Application.Views.Hotel
             Message("1 - Room");
             Message("2 - Client");
             Message("3 - Booking");
-            Message("4 - Sair");
+            Message("4 - Exit");
         }
         private void ShowInfoHotel()
         {
@@ -59,6 +55,7 @@ namespace Hotel.Application.Views.Hotel
             Message($"Quantity room: {infoHotel.QuantityRoom}");
             Message($"Quantity room busy: {infoHotel.QuantityRoomBusy}");
             Message($"Quantity room block: {infoHotel.QuantityRoomBlock}");
+            Message("");
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29102.190
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{749130A0-9C75-42E1-9B07-644B4368398B}"
 EndProject
@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Business", "source\Ho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Repository", "source\Hotel.Repository\Hotel.Repository.csproj", "{61C6BAD2-A822-4BF8-BCE9-750DFFBAEF33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Services.Tests", "tests\Hotel.Services.Tests\Hotel.Services.Tests.csproj", "{9B0EF06F-D8BD-4E5F-B14C-433700BC971C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{D6DD16A9-942D-49A5-9F21-248ABDD53326}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Tests", "tests\Hotel.Tests\Hotel.Tests.csproj", "{AD2F058B-A93F-4783-A2C3-1C228EBADAEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +53,10 @@ Global
 		{61C6BAD2-A822-4BF8-BCE9-750DFFBAEF33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61C6BAD2-A822-4BF8-BCE9-750DFFBAEF33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61C6BAD2-A822-4BF8-BCE9-750DFFBAEF33}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B0EF06F-D8BD-4E5F-B14C-433700BC971C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B0EF06F-D8BD-4E5F-B14C-433700BC971C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B0EF06F-D8BD-4E5F-B14C-433700BC971C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B0EF06F-D8BD-4E5F-B14C-433700BC971C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD2F058B-A93F-4783-A2C3-1C228EBADAEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD2F058B-A93F-4783-A2C3-1C228EBADAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD2F058B-A93F-4783-A2C3-1C228EBADAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD2F058B-A93F-4783-A2C3-1C228EBADAEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,7 +67,7 @@ Global
 		{5BAEB52A-E5F1-4497-8222-7D676B4D67B9} = {1CA07C0C-3C5F-4375-AF48-893DC0241F14}
 		{3AE98008-3F48-4E87-93FC-946803F7C242} = {F05E63C4-808F-478F-951B-A1AB6537EC39}
 		{61C6BAD2-A822-4BF8-BCE9-750DFFBAEF33} = {937703BC-1FB0-493B-A2A1-F7E45C3F14C4}
-		{9B0EF06F-D8BD-4E5F-B14C-433700BC971C} = {5CADA535-1EDF-41AE-88C2-9F93E57B22FA}
+		{AD2F058B-A93F-4783-A2C3-1C228EBADAEE} = {D6DD16A9-942D-49A5-9F21-248ABDD53326}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {260AD9F1-EFE4-4054-ADF6-83F20F8544DD}

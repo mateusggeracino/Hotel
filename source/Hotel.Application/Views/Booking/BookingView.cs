@@ -1,8 +1,5 @@
 ﻿using System;
-using Hotel.Business.Business;
 using Hotel.Domain.Models;
-using Hotel.Repository.Repository;
-using Hotel.Services;
 
 namespace Hotel.Application.Views.Booking
 {
@@ -18,7 +15,7 @@ namespace Hotel.Application.Views.Booking
                 Message("-------------");
                 Message("1 - Add a new Booking");
                 Message("2 - Consult Booking");
-                Message("3 - Sair");
+                Message("3 - Back");
                 var option = Convert.ToInt32(GetInput());
 
                 switch (option)
@@ -38,28 +35,37 @@ namespace Hotel.Application.Views.Booking
 
         private void Consult()
         {
-            var result = true;
-            do
-            {
-                CleanScreen();
-                Message("Select a option");
-                Message("-------------");
-                Message("1 - Get by Social Number");
-                Message("2 - Get by Room Id");
-                Message("3 - Sair");
-                var option = Convert.ToInt32(GetInput());
+            CleanScreen();
+            Message("Enter Social Number: ");
+            var socialNumber = GetInput();
 
-                switch (option)
-                {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        result = false;
-                        break;
-                }
-            } while (result);
+            var bookings = bookingServices.GetBySocialNumber(socialNumber);
+            CleanScreen();
+
+            foreach (var booking in bookings)
+            {
+                ShowBooking(booking);
+            }
+
+            PressToContinue();
+        }
+
+        private void ShowBooking(BookingEntity booking)
+        {
+            Message($"--    Client    --");
+            Message("");
+            Message($"Social Number: {booking.Client.SocialNumber}");
+            Message($"Name: {booking.Client.Name}");
+            Message("");
+            Message($"--    Room    --");
+            Message($"Id: {booking.Room.Id}");
+            Message($"Type: {booking.Room.Type.RoomType}");
+            Message($"Status: {booking.Room.Status}");
+            Message("");
+            Message($"--    Info. Booking    --");
+            Message($"CheckIn: {booking.CheckIn}");
+            Message($"CheckOut: {booking.CheckOut}");
+            Message($"Total: {booking.Total}");
         }
 
         private void Insert()

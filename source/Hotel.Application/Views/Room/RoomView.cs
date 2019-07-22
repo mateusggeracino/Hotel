@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Linq;
-using Hotel.Business.Business;
 using Hotel.Domain.Models;
 using Hotel.Domain.ValueObjects;
-using Hotel.Repository.Repository;
-using Hotel.Services;
 
 namespace Hotel.Application.Views.Room
 {
@@ -74,7 +71,7 @@ namespace Hotel.Application.Views.Room
                 case 1:
                     return RoomStatus.Open;
                 case 2:
-                    return RoomStatus.Block;
+                    return RoomStatus.Lock;
                 default:
                     return RoomStatus.Open;
             }
@@ -133,6 +130,7 @@ namespace Hotel.Application.Views.Room
             Message($"Room Type: {room.Type.RoomType}");
             Message($"Room Status: {room.Status}");
             Message($"Room Price: {room.Type.Price}");
+            
             Message("-------------");
         }
     }

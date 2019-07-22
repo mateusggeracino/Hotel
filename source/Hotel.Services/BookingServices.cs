@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Hotel.Business.Interfaces;
 using Hotel.Domain.Models;
 
@@ -31,6 +33,11 @@ namespace Hotel.Services
 
             var booking = _bookingBusiness.Insert(bookingEntity);
             return booking;
+        }
+
+        public List<BookingEntity> GetBySocialNumber(string socialNumber)
+        {
+            return _bookingBusiness.GetBySocialNumber(socialNumber);
         }
     }
 }

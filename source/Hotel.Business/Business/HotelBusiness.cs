@@ -20,7 +20,7 @@ namespace Hotel.Business.Business
             var infoHotel = new HotelEntity
             {
                 QuantityRoom = _roomRepository.GetAll().Count,
-                QuantityRoomBlock = _roomRepository.Find(x => x.Status == RoomStatus.Block).Count,
+                QuantityRoomBlock = _roomRepository.Find(x => x.Status == RoomStatus.Lock).Count,
                 QuantityRoomBusy = _roomRepository.Find(x => x.Status == RoomStatus.Busy).Count
             };
 
